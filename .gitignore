@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env/
+
+# Model weights
+*.pth
+
+# Generated images / outputs
+*.png
+*.jpg
+
+# OS files
+.DS_Store
+Thumbs.db
