@@ -33,6 +33,23 @@ def load_u2netp():
     model.eval()
     return model
 
+def run_segmentation(image_path, output_mask_path):
+    model = load_u2netp()
+
+    input_tensor, original_shape = preprocess_segmentation_image(image_path)
+    input_tensor = input_tensor.to(device)
+
+    with torch.no_grad():
+        mask = model(input_tensor)
+
+    mask = mask.squeeze().cpu().numpy()
+    mask = cv2.resize(mask, (original_shape[1], original_shape[0]))
+    mask = (mask > 0.5).astype(np.uint8) * 255
+
+    cv2.imwrite(output_mask_path, mask)
+    return output_mask_path
+
+
 # --------------------------------------------------
 # Inference
 # --------------------------------------------------

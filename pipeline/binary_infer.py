@@ -35,6 +35,20 @@ def load_binary_model():
 
     return model
 
+def run_binary_inference(image_path):
+    model = load_binary_model()
+
+    input_tensor = preprocess_classification_image(image_path)
+    input_tensor = input_tensor.to(device)
+
+    with torch.no_grad():
+        logits = model(input_tensor)
+
+    prob = torch.sigmoid(logits).item()
+    label = "Malignant" if prob >= 0.5 else "Benign"
+
+    return prob, label
+
 # --------------------------------------------------
 # Inference
 # --------------------------------------------------
