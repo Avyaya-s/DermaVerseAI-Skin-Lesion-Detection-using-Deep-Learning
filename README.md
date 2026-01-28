@@ -43,98 +43,98 @@ Skin-Lesion-Hierarchical-Pipeline/ <br>
 ├── experiments/ (optional)      # Local experiments / notebooks <br>
 └── README.md<br>
 
-🖥️ System Requirements
-Hardware:   NVIDIA GPU recommended (tested on RTX 3050 / 3070 / 4050)
-            Minimum 16 GB RAM
+🖥️ System Requirements<br>
+Hardware:   NVIDIA GPU recommended (tested on RTX 3050 / 3070 / 4050)<br>
+            Minimum 16 GB RAM<br>
 
-Software:   Python 3.9+
-            CUDA-compatible GPU drivers (if using GPU)
+Software:   Python 3.9+<br>
+            CUDA-compatible GPU drivers (if using GPU)<br>
 
-🧠 Model Training and Weights: All models were trained from scratch by the authors using the ISIC 2018 datasets. 
-                                No off-the-shelf pretrained models were deployed.
+🧠 Model Training and Weights: All models were trained from scratch by the authors using the ISIC 2018 datasets. <br>
+                                No off-the-shelf pretrained models were deployed.<br>
 
-🔹 Training Details
-        1. Segmentation Model: Architecture: U²-NetP
-                               Dataset: ISIC 2018 Task-1 (Lesion Segmentation)
-                               Purpose: Accurate lesion boundary detection and ROI localization
-        2. Binary Classification Model (Benign vs Malignant): Architecture: EfficientNet-B0
-                                                              Dataset: ISIC 2018 Task-3
-                                                              Purpose: Malignancy screening and hierarchical gating
-        3. Multiclass Malignant Classification Model: Architecture: EfficientNet-B0
-                                                      Dataset: ISIC 2018 Task-3 (Malignant classes only)
-                                                      Classes:
-                                                          Melanoma (MEL)
-                                                          Basal Cell Carcinoma (BCC)
-                                                          Actinic Keratosis (AKIEC)
-✔️ Strict train–test separation was followed.
-✔️ No test images were used during training or validation.
+🔹 Training Details<br>
+        1. Segmentation Model: Architecture: U²-NetP<br>
+                               Dataset: ISIC 2018 Task-1 (Lesion Segmentation)<br>
+                               Purpose: Accurate lesion boundary detection and ROI localization<br>
+        2. Binary Classification Model (Benign vs Malignant): Architecture: EfficientNet-B0<br>
+                                                              Dataset: ISIC 2018 Task-3<br>
+                                                              Purpose: Malignancy screening and hierarchical gating<br>
+        3. Multiclass Malignant Classification Model: Architecture: EfficientNet-B0<br>
+                                                      Dataset: ISIC 2018 Task-3 (Malignant classes only)<br>
+                                                      Classes:<br>
+                                                          Melanoma (MEL)<br>
+                                                          Basal Cell Carcinoma (BCC)<br>
+                                                          Actinic Keratosis (AKIEC)<br>
+✔️ Strict train–test separation was followed.<br>
+✔️ No test images were used during training or validation.<br>
 
-📦 Model Weights Availability
-    Due to repository size limitations, trained weights are not included.
-    Weights can be provided upon request or shared via:
-                                                        Google Drive
-                                                        HuggingFace
-                                                        Other external storage
+📦 Model Weights Availability<br>
+    Due to repository size limitations, trained weights are not included.<br>
+    Weights can be provided upon request or shared via:<br>
+                                                        Google Drive<br>
+                                                        HuggingFace<br>
+                                                        Other external storage<br>
 
-⚙️ Setup Instructions
-      1️⃣ Clone the Repository
-            git clone https://github.com/Avyaya-s/DermaVerseAI-Skin-Lesion-Detection-using-Deep-Learning.git
-            cd DermaVerseAI-Skin-Lesion-Detection-using-Deep-Learning
-      2️⃣ Create Virtual Environment (Recommended)
-            python -m venv venv
-            Activate:
-                # Linux / Mac
-                source venv/bin/activate
-                # Windows
-                venv\Scripts\activate
-      3️⃣ Install Dependencies
-            pip install -r deployment/requirements.txt
-      ▶️ Running the Backend Server
-            From the project root:
-                python deployment/app.py
-            If successful:
-                Running on http://127.0.0.1:5000
-🔌 API Endpoints
-      ✅ Health Check
-      GET /health
-          Response
+⚙️ Setup Instructions<br>
+      1️⃣ Clone the Repository<br>
+            git clone https://github.com/Avyaya-s/DermaVerseAI-Skin-Lesion-Detection-using-Deep-Learning.git<br>
+            cd DermaVerseAI-Skin-Lesion-Detection-using-Deep-Learning<br>
+      2️⃣ Create Virtual Environment (Recommended)<br>
+            python -m venv venv<br>
+            Activate:<br>
+                # Linux / Mac<br>
+                source venv/bin/activate<br>
+                # Windows<br>
+                venv\Scripts\activate<br>
+      3️⃣ Install Dependencies<br>
+            pip install -r deployment/requirements.txt<br>
+      ▶️ Running the Backend Server<br>
+            From the project root:<br>
+                python deployment/app.py<br>
+            If successful:<br>
+                Running on http://127.0.0.1:5000<br>
+🔌 API Endpoints<br>
+      ✅ Health Check<br>
+      GET /health<br>
+          Response<br>
           {
             "status": "ok"
-          }
-      🖼️ Image Prediction
-          POST /predict
-          Form-data
-          image : input dermoscopic image
-          Response
+          }<br>
+      🖼️ Image Prediction<br>
+          POST /predict<br>
+          Form-data<br>
+          image : input dermoscopic image<br>
+          Response<br>
           {
-            "binary_prediction": "Malignant",
-            "binary_probability": 0.82,
-            "final_prediction": "MEL",
-            "multiclass_probabilities": {
-              "MEL": 0.63,
-              "BCC": 0.21,
-              "AKIEC": 0.16
-            }
-          }
-🌐 Frontend & ngrok Integration (Optional)
-      To expose the backend publicly:
-      ngrok http 5000
+            "binary_prediction": "Malignant",<br>
+            "binary_probability": 0.82,<br>
+            "final_prediction": "MEL",<br>
+            "multiclass_probabilities": {<br>
+              "MEL": 0.63,<br>
+              "BCC": 0.21,<br>
+              "AKIEC": 0.16<br>
+            }<br>
+          }<br>
+🌐 Frontend & ngrok Integration (Optional)<br>
+      To expose the backend publicly:<br>
+      ngrok http 5000<br>
       Use the generated:
-      https://xxxx.ngrok-free.app
-      URL in your frontend API calls.
-📊 Dataset & Evaluation
-      Dataset: ISIC 2018 Task-3
-      Test Set Size: 1,512 images
-      Evaluation: Performed only on unseen test data
-      Test-Time Augmentation: None
-      Data Leakage: None
-      Reported results reflect pipeline-level performance, not isolated model metrics.
+      https://xxxx.ngrok-free.app<br>
+      URL in your frontend API calls.<br>
+📊 Dataset & Evaluation<br>
+      Dataset: ISIC 2018 Task-3<br>
+      Test Set Size: 1,512 images<br>
+      Evaluation: Performed only on unseen test data<br>
+      Test-Time Augmentation: None<br>
+      Data Leakage: None<br>
+      Reported results reflect pipeline-level performance, not isolated model metrics.<br>
 
-🎯 Design Philosophy
-      Unlike single-stage classifiers, this work prioritizes:
-          🛡️ Clinical safety (high malignant recall)
-          🔍 Interpretability
-          🧭 Error traceability
-          🚀 Deployment realism
+🎯 Design Philosophy<br>
+      Unlike single-stage classifiers, this work prioritizes:<br>
+          🛡️ Clinical safety (high malignant recall)<br>
+          🔍 Interpretability<br>
+          🧭 Error traceability<br>
+          🚀 Deployment realism<br>
 
 Accuracy trade-offs are explicitly analyzed via cascade error analysis.
