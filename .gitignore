@@ -1,0 +1,21 @@
+# Datasets
+Datasets/
+ISIC2018_Task3_Test_Images/
+ISIC2018_Task3_Test_GroundTruth.csv
+test_images/
+
+# Model weights
+*.pth
+weights/
+
+# Runtime folders
+uploads/
+deployment/temp/
+
+# Cache
+__pycache__/
+*.pyc
+
+# Experiments / research
+pipeline/
+papers/
