@@ -12,17 +12,12 @@ Hierarchical Skin Lesion Analysis Pipeline:
 
 Project Highlights
 
-      (1)Hierarchical (cascaded) design inspired by clinical decision-making
-      
-      (2)Segmentation-guided inference using ROI extraction
-      
-      (3)Binary gating to control class imbalance
-      
-      (4)End-to-end pipeline evaluation (not isolated models)
-      
-      (5)Deployment-ready Flask backend with API support
-      
-      (5)Compatible with frontend integration and ngrok-based exposure
+(1)Hierarchical (cascaded) design inspired by clinical decision-making
+(2)Segmentation-guided inference using ROI extraction
+(3)Binary gating to control class imbalance
+(4)End-to-end pipeline evaluation (not isolated models)
+(5)Deployment-ready Flask backend with API support
+(5)Compatible with frontend integration and ngrok-based exposure
 
 Repo Structure
 
